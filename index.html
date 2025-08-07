@@ -1,3 +1,18 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,101 +139,56 @@
       border-bottom: 1px solid #ccc;
     }
 
-    .roadmap {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .roadmap .card {
-      flex: 1 1 300px;
-      max-width: 100%;
-      background: linear-gradient(135deg, #ffecb3, #d1c4e9);
-    }
-
-
-
-.roadmap-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .card-inner {
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .card-inner:hover {
-    transform: translateY(-5px);
-  }
-
-  .card-inner h3 {
-    margin-top: 0;
-    text-align: center;
-    font-size: 1.4em;
-  }
-
-  .card-inner ul {
-    padding-left: 20px;
-    text-align: left;
-  }
-
-  @media (max-width: 768px) {
     .roadmap-grid {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
     }
 
+    .card-inner {
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+    }
 
+    .card-inner:hover {
+      transform: translateY(-5px);
+    }
 
+    .card-inner h3 {
+      margin-top: 0;
+      text-align: center;
+      font-size: 1.4em;
+    }
 
+    .card-inner ul {
+      padding-left: 20px;
+      text-align: left;
+    }
 
+    .zzz {
+      font-size: 1.5rem;
+      animation: floatZzz 3s ease-in-out infinite;
+      display: inline-block;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @keyframes floatZzz {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
 
     footer {
       text-align: center;
-      padding: 30px 20px;
+      padding: 20px;
+      font-family: 'Baloo 2', cursive;
+      font-size: 20px;
       background: linear-gradient(135deg, #e1bee7, #b3e5fc);
-      color: #333;
+      color: white;
+      position: relative;
       border-top-left-radius: 25px;
       border-top-right-radius: 25px;
       box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
@@ -229,30 +199,15 @@
       margin-bottom: 10px;
     }
 
-    .zzz {
-      font-size: 1.5rem;
-      animation: floatZzz 2s infinite ease-in-out;
-      display: inline-block;
-    }
-
-    @keyframes floatZzz {
-      0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-
     @media screen and (max-width: 768px) {
       header h1 {
         font-size: 2rem;
       }
       .vest-button {
         font-size: 0.9rem;
+      }
+      .roadmap-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -262,7 +217,6 @@
   <header>
     <h1>Yawnie Doo Whitepaper</h1>
     <a href="https://yawniedoo.github.io/Vesting/" class="vest-button" target="_blank" rel="noopener noreferrer">Proof of Token Vesting</a>
-
   </header>
 
   <section id="summary">
@@ -452,7 +406,8 @@ Through innovative meme culture, community engagement, and wellness-oriented uti
     </div>
   </section>
 
-  <footer>
+
+  <footer class="footer">
     <p>All naps reserved. <span class="zzz">Zzz</span></p>
   </footer>
 
