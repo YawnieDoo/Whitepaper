@@ -1,476 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yawnie Doo Whitepaper</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Baloo 2', cursive;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #f0f8ff;
+      font-family: 'Baloo 2', cursive;
     }
+
+    body {
+      background-color: #fdfdfd;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
     header {
-      background: linear-gradient(to right, #00bcd4, #4fc3f7);
-      color: white;
+      position: relative;
+      height: 200px;
+      background: linear-gradient(135deg, #f3e5f5, #e0f7fa);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
       padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
       text-align: center;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      margin-bottom: 10px;
     }
-    .vesting-button {
-      display: inline-block;
-      margin: 20px auto;
+
+    .vest-button {
       padding: 10px 20px;
-      background-color: #ffcc80;
-      color: #333;
+      font-size: 1rem;
+      background-color: #aed581;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
       text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      color: #000;
     }
-    .vesting-button:hover {
-      background-color: #ffb74d;
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+
+    .balloon {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: floatDown 6s infinite ease-in-out;
     }
+
+    @keyframes floatDown {
+      0% {
+        transform: translateY(-100%) scale(1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(100%) scale(1.2);
+        opacity: 0;
+      }
+    }
+
     section {
-      background-color: white;
-      margin: 20px;
+      padding: 30px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 1000px;
+      min-width: 300px;
+      background: linear-gradient(135deg, #fce4ec, #e1f5fe);
       padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease-in;
-    }
-    h2 {
-      color: #444;
-      font-size: 27px;
+      border-radius: 15px;
+      margin: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
     }
 
-   h3 {
-      color: #444;
-      font-size: 20px;
+    .card p {
+      margin-bottom: 10px;
     }
 
-    .roadmap, .tokenomics-cards {
+    .card ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .tokenomics-table {
+      width: 100%;
+      max-width: 1000px;
+      min-width: 300px;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .tokenomics-table th {
+      font-size: 1.2rem;
+      padding: 10px;
+      background-color: #b2dfdb;
+      text-align: left;
+    }
+
+    .tokenomics-table td {
+      padding: 10px;
+      background-color: #e0f2f1;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .roadmap {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      justify-content: center;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .card {
-      background-color: #ffffff;
-      border: 2px solid #b2ebf2;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: slideInUp 0.8s ease forwards;
+
+    .roadmap .card {
+      background: linear-gradient(135deg, #ffecb3, #d1c4e9);
     }
-    .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(135deg, #e1bee7, #b3e5fc);
+      color: #333;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+
+    footer p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
     }
-    @keyframes slideInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+
+    .zzz {
+      font-size: 1.5rem;
+      animation: floatZzz 2s infinite ease-in-out;
+      display: inline-block;
+    }
+
+    @keyframes floatZzz {
+      0% {
+        transform: translateY(0);
       }
-      to {
-        opacity: 1;
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
         transform: translateY(0);
       }
     }
-    @media (max-width: 600px) {
-      header {
-        padding: 15px;
+
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
       }
-      .vesting-button {
-        padding: 8px 16px;
-        font-size: 14px;
+      .vest-button {
+        font-size: 0.9rem;
       }
-      section {
-        margin: 10px;
-        padding: 15px;
-      }
-      
     }
   </style>
 </head>
+
 <body>
-
-<header>
-  <h1>Yawnie Doo Whitepaper</h1>
-  <a href="https://github.io" target="_blank" class="vesting-button">Proof of Token Vesting</a>
-</header>
-
-<section>
-  <h2>1. Executive Summary</h2>
-  <p>Meet Yawnie Doo — the lovable, slow-moving pup inspired by the iconic Scooby Doo, but with a twist: instead of chasing adventures or fame, Yawnie Doo chases naps. With his floppy ears, sleepy grin, and a yawn that could charm any blockchain, he’s not just a mascot — he’s a mood. While others chase hype and frantic market moves, Yawnie Doo reminds us that sometimes the best way to ride the waves is by taking a calm, restful pause. Yawnie Doo embodies the spirit of low stress and high fun, offering a fresh take on meme culture with a message that it’s okay to slow down and just chill — even in the fast-paced crypto world.</p>
-<p>Beyond fun and memes, Yawnie Doo carries a deeper message backed by science: taking life too seriously can harm both our mental and physical health. Stress and panic during tough times — whether in finances, relationships, or life’s challenges — often make situations worse. Yawnie Doo encourages you to pause, relax, and face adversity with calm and resilience. This token isn’t just about laughs; it stands for a healthier, balanced approach to life and success. Because sometimes, the smartest move is to yawn, take a nap, and come back stronger.</p>
-</section>
-
-<section>
-  <h2>2. Introduction</h2>
-  <p>Dummy content goes here...</p>
-</section>
-
-<section>
-  <h2>3. Mission & Vision</h2>
-<p>In a world obsessed with speed, hype, and FOMO, Yawnie Doo invites you to pause, breathe, and thrive. At Yawnie Doo, we are redefining not just the crypto space — but how we navigate life itself. With a fresh, emotionally intelligent approach, we are creating a unique meme token that goes beyond the typical hype and chaos of the crypto world. We are creating an ecosystem that embraces low-stress, high-fun vibes while promoting mental wellness, meaningful community, and responsible investing. Life comes with all kinds of stressors — financial uncertainty, emotional setbacks, personal struggles, or unexpected adversity. We are here to offer something different: a calm, grounded, and empowering environment where people can grow, connect, and thrive — no matter what life throws their way.</p>
-<p>By embracing the spirit of relaxation and mental wellness, Yawnie Doo encourages everyone to take a step back from the relentless pace of life and markets, reminding them that success doesn’t have to come from stress or burnout.
-We are committed to spreading a message of <strong>calm resilience</strong>: no matter the challenges you face, there is value in pausing, reflecting, and approaching problems with a relaxed mind. Yawnie Doo aims to be a symbol of balance, positivity, and smart investing, empowering holders to stay grounded and focused while still having fun.
-Through innovative meme culture, community engagement, and wellness-oriented utilities, Yawnie Doo strives to make mental and physical health a priority proving that sometimes the best way forward is with a yawn, a nap, and a smile.</p>
-<p>Yawnie Doo’s vibrant, emotionally intelligent ecosystem encourages:</p>
-<ul>
-  <li>
-    <p><strong>Mental Health Awareness</strong><br>
-    Because your mind matters more than your portfolio.</p>
-  </li>
-  <li>
-    <p><strong>Responsible Investing Habits</strong><br>
-    Avoid emotional decisions and embrace long-term value.</p>
-  </li>
-  <li>
-    <p><strong>Life Balance in a Digital Age</strong><br>
-    What good is success if it comes at the cost of your peace?</p>
-  </li>
-</ul>
-<p>Because the best strategies—whether in life or in crypto—begin with a calm mind.</p>
-
-<h3>Our Core Values</h3>
-<ul>
-  <li>
-    <p><strong>Emotional Intelligence</strong><br> We cultivate a space where kindness and understanding are valued.</p>
-  </li>
-  <li> 
-    <p><strong>Fun with Purpose</strong><br> Yes, we love memes—but ours come with meaning.</p>
-  </li>
-</ul>
-
-<p>Our <strong>vision</strong> is to cultivate a vibrant, supportive community where the values of calmness, joy, and mental wellness thrive alongside innovative blockchain technology. We see Yawnie Doo as more than just a meme token—it’s a movement dedicated to redefining success through balance and mindfulness, both in life and within the crypto space. We aspire to inspire a global audience to embrace a healthier relationship with finance and technology, where stress and fear no longer dictate decisions. By fostering an environment that celebrates humor, relaxation, and thoughtful growth, Yawnie Doo aims to become a leading example of how fun and well-being can coexist with financial opportunity. Ultimately, we envision a future where Yawnie Doo’s sleepy charm and chill philosophy encourage everyone—from casual crypto enthusiasts to seasoned investors—to navigate the blockchain world with confidence, positivity, and a little more rest.</p>
-<h3>Be Like Yawnie Doo</h3>
-<p>Yawn. Relax. Win</p>
-</section>
-
-
-<section id="tokenomics">
-  <h2>Tokenomics</h2>
-
-  <h3>Total Supply</h3>
-  <p>1,000,000,000 [TOKEN_NAME] tokens</p>
-  <p>Token Type: SPL Token (Solana)</p>
-  <p>Ticker: [TOKEN]</p>
-
-  <h3>Allocation Breakdown</h3>
-  <table border="1" cellpadding="8">
-    <thead>
-      <tr>
-        <th>Allocation</th>
-        <th>Percentage</th>
-        <th>Token Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Marketing</td>
-        <td>10%</td>
-        <td>100,000,000</td>
-      </tr>
-      <tr>
-        <td>Staking</td>
-        <td>9%</td>
-        <td>90,000,000</td>
-      </tr>
-      <tr>
-        <td>Development</td>
-        <td>15%</td>
-        <td>150,000,000</td>
-      </tr>
-      <tr>
-        <td>Team</td>
-        <td>20%</td>
-        <td>200,000,000</td>
-      </tr>
-      <!-- Add other rows as needed -->
-    </tbody>
-  </table>
-
-  <h3>Vesting Overview</h3>
-  <ul>
-    <li>All major allocations are vested over defined schedules.</li>
-    <li>Monthly unlocks are done via [vesting platform name].</li>
-    <li>Team tokens begin unlocking after a 6-month cliff.</li>
-    <li>Marketing and airdrop allocations are unlocked monthly.</li>
-    <li>Each wallet is fully transparent and verifiable on-chain.</li>
-  </ul>
-
-  <p>
-    🔗 <strong>For full details (wallet addresses, monthly unlocks, and Solscan links), please visit:</strong><br>
-    <a href="https://yourvestingpage.com" target="_blank">https://yourvestingpage.com</a>
-  </p>
-
-  <h3>Token Utility</h3>
-  <ul>
-    <li>Staking Rewards</li>
-    <li>Governance Participation</li>
-    <li>Payments inside the ecosystem</li>
-    <li>Priority Access to features</li>
-  </ul>
-
-  <h3>Allocation Pie Chart</h3>
-  <canvas id="tokenPieChart" width="300" height="300"></canvas>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section>
-  <h2>5. Utility & Use Cases</h2>
-  <p>Dummy content goes here...</p>
-</section>
-
-<section>
-  <h2>6. Technology & Security</h2>
-  <p>Dummy content goes here...</p>
-</section>
-
-<section>
-  <h2>7. Roadmap / Project Timeline</h2>
-  <div class="roadmap">
-    
-<div class="card">
-  <h3>Phase 1 - Power Nap</h3>
-  <ul>
-    <li>Lie down in a quiet, dark room.</li>
-    <li>Set a timer for 20–30 minutes.</li>
-    <li>Relax your body and mind.</li>
-    <li>Avoid caffeine before the nap.</li>
-  </ul>
-</div>
-
-<div class="card">
-  <h3>Phase 2 - Power Nap</h3>
-  <ul>
-    <li>Lie down in a quiet, dark room.</li>
-    <li>Set a timer for 20–30 minutes.</li>
-    <li>Relax your body and mind.</li>
-    <li>Avoid caffeine before the nap.</li>
-  </ul>
-</div>
-<div class="card">
-  <h3>Phase 3 - Power Nap</h3>
-  <ul>
-    <li>Lie down in a quiet, dark room.</li>
-    <li>Set a timer for 20–30 minutes.</li>
-    <li>Relax your body and mind.</li>
-    <li>Avoid caffeine before the nap.</li>
-  </ul>
-</div>
-<div class="card">
-  <h3>Phase 4 - Power Nap</h3>
-  <ul>
-    <li>Lie down in a quiet, dark room.</li>
-    <li>Set a timer for 20–30 minutes.</li>
-    <li>Relax your body and mind.</li>
-    <li>Avoid caffeine before the nap.</li>
-  </ul>
-</div>
-<div class="card">
-  <h3>Phase 5 - Power Nap</h3>
-  <ul>
-    <li>Lie down in a quiet, dark room.</li>
-    <li>Set a timer for 20–30 minutes.</li>
-    <li>Relax your body and mind.</li>
-    <li>Avoid caffeine before the nap.</li>
-  </ul>
-</div>
-<div class="card">
-  <h3>Phase 6 - Power Nap</h3>
-  <ul>
-    <li>Lie down in a quiet, dark room.</li>
-    <li>Set a timer for 20–30 minutes.</li>
-    <li>Relax your body and mind.</li>
-    <li>Avoid caffeine before the nap.</li>
-  </ul>
-</div>
-  </div>
-</section>
-
-<section id="community-governance">
-  <h2>8. Community and Governance</h2>
-  <p>
-    At the heart of <strong>Yawnie Doo</strong> lies its most powerful force — the community. We believe that every meme, every nap, and every step forward should be shaped by the people who believe in the Yawnie Doo vision. That’s why our community isn’t just along for the ride — they’re in the driver’s seat (or rather, the comfy couch).
-  </p>
-
-  <p>
-    Yawnie Doo thrives on community engagement, creativity, and shared vibes. From spreading memes to participating in discussions, events, and decision-making, every holder has a voice. We encourage an open, inclusive environment where all sleepyheads, chill investors, and meme lovers can contribute their ideas, talents, and energy.
-  </p>
-
-  <h3>Governance</h3>
-  <p>
-    Yawnie Doo will implement a community-driven governance model, allowing token holders to vote on key decisions related to the project’s future. This includes proposals on:
-  </p>
-  <ul>
-    <li>Development priorities and feature updates</li>
-    <li>Community initiatives and partnerships</li>
-    <li>Fund allocation from community wallets</li>
-    <li>Future roadmap phases and token utility expansions</li>
-  </ul>
-
-  <p>
-    Governance will evolve gradually, starting with team-led proposals and eventually transitioning to decentralized decision-making through <strong>Yawnie Doo DAO</strong> (Decentralized Autonomous Organization). This ensures that as the project grows, power and influence shift naturally to the community.
-  </p>
-
-  <h3>Community Values</h3>
-  <ul>
-    <li><strong>Chill and Respect</strong> – Everyone’s welcome, no pressure, no stress.</li>
-    <li><strong>Participation</strong> – Meme, share, suggest, and vote — every action counts.</li>
-    <li><strong>Transparency</strong> – Open communication, honest updates, and clear decision processes.</li>
-    <li><strong>Wellness First</strong> – We promote a positive, balanced approach to crypto and life.</li>
-  </ul>
-
-  <p>
-    Yawnie Doo isn’t just a token — it’s a community-powered movement built on the idea that good vibes, humor, and health-conscious values can create lasting impact in Web3.
-  </p>
-</section>
-
-<section id="marketing-and-partnerships">
-  <h2>9. Marketing & Partnerships</h2>
-
-  <h3>Marketing Strategy</h3>
-  <p>
-    Yawnie Doo’s marketing approach is as fun and laid-back as the mascot himself, but it's backed by strategy and creativity.
-    Our goal is to build a strong, engaged, and global community through humor, relatability, and consistent content.
-  </p>
-
-  <p>Key marketing initiatives include:</p>
-  <ul>
-    <li>Viral meme campaigns across social media platforms</li>
-    <li>Collaborations with meme influencers and content creators</li>
-    <li>Giveaways, contests, and community events</li>
-    <li>Engaging video content and animations featuring Yawnie Doo</li>
-    <li>Listings and features on crypto media outlets</li>
-  </ul>
-
-  <p>
-    The marketing team will continuously adapt and innovate to keep Yawnie Doo in the spotlight
-    while staying true to its relaxed, fun-loving identity.
-  </p>
-
-  <h3>Partnerships</h3>
-  <p>
-    Strategic partnerships are vital to expanding Yawnie Doo’s reach and utility.
-    We aim to form collaborations that align with our brand’s playful yet wellness-driven spirit.
-  </p>
-
-  <p>Planned partnership initiatives include:</p>
-  <ul>
-    <li>Meme projects and Web3 creators for joint campaigns</li>
-    <li>Wellness and lifestyle brands for cross-promotions</li>
-    <li>NFT platforms for collectible drops and collaborations</li>
-    <li>Crypto exchanges for token listings and visibility</li>
-    <li>Event organizers for chill, community-centered meetups</li>
-  </ul>
-
-  <p>
-    Through thoughtful partnerships, Yawnie Doo will spread its message far and wide
-    while creating unique value for holders and collaborators.
-  </p>
-</section>
-
-
-
-
-
-
-<section>
-  <h2>10. Team & Advisors</h2>
-  <p>Dummy content goes here...</p>
-</section>
-
-<section>
-  <h2>11. Legal / Compliance / Risk Discussion</h2>
-  <p>Dummy content goes here...</p>
-</section>
-
-<section>
-  <h2>12. Conclusion / Summary</h2>
-  <p>Dummy content goes here...</p>
-</section>
-
-<script>
-  const canvas = document.getElementById('tokenPieChart');
-  const ctx = canvas.getContext('2d');
-
-  const data = [
-    { label: "Marketing", value: 25 },
-    { label: "Airdrop", value: 10 },
-    { label: "Dev Wallet", value: 20 },
-    { label: "Staking", value: 15 },
-    { label: "CEX Listing", value: 20 },
-    { label: "Partnerships", value: 10 },
-  ];
-
-  const total = data.reduce((sum, d) => sum + d.value, 0);
-  let startAngle = 0;
-
-  data.forEach((slice, index) => {
-    const sliceAngle = (slice.value / total) * 2 * Math.PI;
-
-    // Random color for each slice
-    ctx.fillStyle = `hsl(${index * 60}, 70%, 60%)`;
-    ctx.beginPath();
-    ctx.moveTo(150, 150); // center of the circle
-    ctx.arc(150, 150, 150, startAngle, startAngle + sliceAngle);
-    ctx.closePath();
-    ctx.fill();
-
-    startAngle += sliceAngle;
-  });
-</script>
-
-
-
+  <header>
+    <h1>Yawnie Doo Whitepaper</h1>
+    <a href="https://www.github.io" class="vest-button" target="_blank">Vesting Proof</a>
+  </header>
+
+  <section id="category1">
+    <h2>Category One</h2>
+    <div class="card">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <ul>
+        <li>Point 1</li><li>Point 2</li><li>Point 3</li><li>Point 4</li><li>Point 5</li>
+      </ul>
+      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+      <ul>
+        <li>Point A</li><li>Point B</li><li>Point C</li><li>Point D</li><li>Point E</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="category2">
+    <h2>Category Two</h2>
+    <div class="card">
+      <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+      <ul>
+        <li>Alpha</li><li>Beta</li><li>Gamma</li><li>Delta</li><li>Epsilon</li>
+      </ul>
+      <p>Nulla porttitor accumsan tincidunt.</p>
+      <ul>
+        <li>First</li><li>Second</li><li>Third</li><li>Fourth</li><li>Fifth</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="category3">
+    <h2>Category Three</h2>
+    <div class="card">
+      <p>Donec rutrum congue leo eget malesuada.</p>
+      <ul>
+        <li>One</li><li>Two</li><li>Three</li><li>Four</li><li>Five</li>
+      </ul>
+      <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
+      <ul>
+        <li>Item A</li><li>Item B</li><li>Item C</li><li>Item D</li><li>Item E</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="tokenomics">
+    <h2>Tokenomics</h2>
+    <table class="tokenomics-table">
+      <thead>
+        <tr><th>Category</th><th>Allocation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Alpha</td><td>10%</td></tr>
+        <tr><td>Beta</td><td>15%</td></tr>
+        <tr><td>Gamma</td><td>25%</td></tr>
+        <tr><td>Delta</td><td>50%</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>Token locked for 6 months.</li>
+      <li>Gradual release over next 12 months.</li>
+    </ul>
+  </section>
+
+  <section id="utility">
+    <h2>Utility and Use Cases</h2>
+  </section>
+
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap">
+      <div class="card"><h3>Q3 2025</h3><ul><li>Task 1</li><li>Task 2</li><li>Task 3</li><li>Task 4</li><li>Task 5</li><li>Task 6</li></ul></div>
+      <div class="card"><h3>Q4 2025</h3><ul><li>Task 1</li><li>Task 2</li><li>Task 3</li><li>Task 4</li><li>Task 5</li><li>Task 6</li></ul></div>
+      <div class="card"><h3>Q1 2026</h3><ul><li>Task 1</li><li>Task 2</li><li>Task 3</li><li>Task 4</li><li>Task 5</li><li>Task 6</li></ul></div>
+      <div class="card"><h3>Q2 2026</h3><ul><li>Task 1</li><li>Task 2</li><li>Task 3</li><li>Task 4</li><li>Task 5</li><li>Task 6</li></ul></div>
+      <div class="card"><h3>Q3 2026</h3><ul><li>Task 1</li><li>Task 2</li><li>Task 3</li><li>Task 4</li><li>Task 5</li><li>Task 6</li></ul></div>
+      <div class="card"><h3>Q4 2026</h3><ul><li>Task 1</li><li>Task 2</li><li>Task 3</li><li>Task 4</li><li>Task 5</li><li>Task 6</li></ul></div>
+    </div>
+  </section>
+
+  <section id="governance">
+    <h2>Community and Governance</h2>
+    <div class="card">
+      <p>Engaging the community in decisions and future upgrades is core to Yawnie Doo’s mission.</p>
+      <ul>
+        <li>DAO voting rights</li>
+        <li>Proposal submissions</li>
+        <li>Monthly town halls</li>
+        <li>Incentives for governance participation</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>All naps reserved. <span class="zzz">Zzz</span></p>
+  </footer>
+
+  <script>
+    const colors = ['#ffccbc', '#d1c4e9', '#f8bbd0', '#c8e6c9', '#b2ebf2'];
+    const header = document.querySelector('header');
+
+    for (let i = 0; i < 30; i++) {
+      const balloon = document.createElement('div');
+      const size = Math.floor(Math.random() * 30 + 20);
+      balloon.className = 'balloon';
+      balloon.style.width = `${size}px`;
+      balloon.style.height = `${size}px`;
+      balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      balloon.style.left = `${Math.random() * 100}%`;
+      balloon.style.animationDuration = `${Math.random() * 5 + 3}s`;
+      balloon.style.animationDelay = `${Math.random() * 5}s`;
+      header.appendChild(balloon);
+    }
+  </script>
 </body>
+
 </html>
