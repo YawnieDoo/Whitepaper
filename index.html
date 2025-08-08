@@ -7,195 +7,232 @@
   <title>Yawnie Doo Whitepaper</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Baloo 2', cursive;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Baloo 2', cursive;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    body {
-      background-color: #fdfdfd;
-      line-height: 1.6;
-      text-align: justify;
-    }
+body {
+  background-color: #fdfdfd;
+  line-height: 1.6;
+  text-align: justify;
+  font-size: clamp(14px, 2.5vw, 18px);
+}
 
-    header {
-      position: relative;
-      height: 300px;
-      background: linear-gradient(135deg, #f3e5f5, #e0f7fa);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 20px;
-    }
+header {
+  position: relative;
+  height: 300px;
+  background: linear-gradient(135deg, #f3e5f5, #e0f7fa);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
 
-    header h1 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 10px;
-    }
+header h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
 
-    .vest-button {
-      padding: 10px 20px;
-      font-size: 1rem;
-      background-color: #aed581;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      text-decoration: none;
-      color: #000;
-    }
+.vest-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #aed581;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
 
-    .balloon {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: floatDown 6s infinite ease-in-out;
-    }
+.balloon {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: floatDown 6s infinite ease-in-out;
+}
 
-    @keyframes floatDown {
-      0% {
-        transform: translateY(-100%) scale(1);
-        opacity: 0;
-      }
-      50% {
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(100%) scale(1.2);
-        opacity: 0;
-      }
-    }
+@keyframes floatDown {
+  0% { transform: translateY(-100%) scale(1); opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { transform: translateY(100%) scale(1.2); opacity: 0; }
+}
 
-    section {
-      padding: 30px 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+section {
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-    .card {
-      width: 100%;
-      max-width: 1000px;
-      min-width: 300px;
-      background: linear-gradient(135deg, #fce4ec, #e1f5fe);
-      padding: 20px;
-      border-radius: 15px;
-      margin: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    }
+.card {
+  width: 100%;
+  max-width: 1000px;
+  min-width: 300px;
+  background: linear-gradient(135deg, #fce4ec, #e1f5fe);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
 
-    .card p {
-      margin-bottom: 10px;
-    }
+.card p {
+  margin-bottom: 10px;
+}
 
-    .card ul {
-      padding-left: 20px;
-      margin-bottom: 15px;
-    }
+.card ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
 
-    .tokenomics-table {
-      width: 100%;
-      max-width: 1000px;
-      min-width: 300px;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
+.tokenomics-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
 
-    .tokenomics-table th {
-      font-size: 1.2rem;
-      padding: 10px;
-      background-color: #AC50B5;
-      text-align: left;
-    }
+.tokenomics-table th {
+  font-size: 1.2rem;
+  padding: 10px;
+  background-color: #AC50B5;
+  text-align: left;
+}
 
-    .tokenomics-table td {
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-    }
+.tokenomics-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
 
-    .roadmap-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
+.tokenomics-table a {
+  font-size: 0.95rem;
+  word-break: break-all;
+  display: inline-block;
+}
 
-    .card-inner {
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-      transition: transform 0.2s ease-in-out;
-    }
+/* Scrollable wrapper for tokenomics table */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 15px;
+}
 
-    .card-inner:hover {
-      transform: translateY(-5px);
-    }
+.table-container::-webkit-scrollbar {
+  height: 8px;
+}
+.table-container::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 5px;
+}
 
-    .card-inner h3 {
-      margin-top: 0;
-      text-align: center;
-      font-size: 1.4em;
-    }
+/* === Roadmap Grid === */
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
 
-    .card-inner ul {
-      padding-left: 20px;
-      text-align: left;
-    }
+.card-inner {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease-in-out;
+}
 
-    .zzz {
-      font-size: 1.5rem;
-      animation: floatZzz 3s ease-in-out infinite;
-      display: inline-block;
-    }
+.card-inner:hover {
+  transform: translateY(-5px);
+}
 
-    @keyframes floatZzz {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
+.card-inner h3 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.4em;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-family: 'Baloo 2', cursive;
-      font-size: 20px;
-      background: linear-gradient(135deg, #e1bee7, #b3e5fc);
-      color: white;
-      position: relative;
-      border-top: 2px solid #ccc;
-      box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
+.card-inner ul {
+  padding-left: 20px;
+  text-align: left;
+}
 
-      
-    }
+.zzz {
+  font-size: 1.5rem;
+  animation: floatZzz 3s ease-in-out infinite;
+  display: inline-block;
+}
 
-    footer p {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
+@keyframes floatZzz {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
 
-    @media screen and (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .vest-button {
-        font-size: 0.9rem;
-      }
-      .roadmap-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+footer {
+  text-align: center;
+  padding: 20px;
+  font-family: 'Baloo 2', cursive;
+  font-size: 20px;
+  background: linear-gradient(135deg, #e1bee7, #b3e5fc);
+  color: white;
+  position: relative;
+  border-top: 2px solid #ccc;
+  box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+footer p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media screen and (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .vest-button {
+    font-size: 0.9rem;
+  }
+
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tokenomics-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, a, button {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+</style>
+
+
 </head>
 
 <body>
@@ -285,7 +322,7 @@ Through innovative meme culture, community engagement, and wellness-oriented uti
       <li><strong>Freezing:</strong> Not enabled</li>
       <li><strong>Transaction Tax:</strong> None</li>
       <li>
-        <strong>CA:</strong>
+        <strong>Contract Address:</strong>
         <a href="https://solscan.io/token/DR6DFDxix36ZRAA13GGCtLcqsuLjA6JLmuhcjeAS7mpj" target="_blank">
           DR6DFDxix36ZRAA13GGCtLcqsuLjA6JLmuhcjeAS7mpj
         </a>
